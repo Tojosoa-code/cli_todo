@@ -52,6 +52,7 @@ Fonctionnalités principales :
 ## 👨‍💻 Auteur
 
 **Tojosoa Mahefa**
-- GitHub : [Tojosoa-code](https://github.com/Tojosoa-code)
-- Email : tojosoamahefa@gmail.com (optionnel)
+[![Email](https://img.shields.io/badge/Email-tojosoamahefa@gmail.com-c14438?logo=gmail&logoColor=white)](mailto:tojosoamahefa@gmail.com)
+GitHub : [Tojosoa-code](https://github.com/Tojosoa-code)
+
 - Projet personnel pour s’entraîner à **Python et POO**
