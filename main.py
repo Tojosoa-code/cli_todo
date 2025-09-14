@@ -53,6 +53,9 @@ if __name__ == "__main__" :
     choice = input("Votre choix [> ")
 
     match choice :
+
+      # Ajout de tâche
+
       case "1" :
         app.clear_screen()
         app.getTitle("AJOUTER UNE TACHE")
@@ -68,16 +71,32 @@ if __name__ == "__main__" :
         else :
           app.clear_screen()
           app.getMessage("❌ Tâche rejeté 🤨")
+
+
+      # Marquer une tâche comme terminer
+
       case "2" :
         app.clear_screen()
         app.getTitle("MARQUER TERMINER")
+        manager.list_tasks_not_finish()
         task_mark = int(input("Numéro du tâche à marquer comme terminé [> "))
-        manager.mark_completed(task_mark)
+        mark = manager.mark_completed(task_mark)
+        app.clear_screen()
+        if mark :
+          app.getMessage("✅ Tâche mis à jour")
+        else :
+          app.getMessage("❌ Ce tâche n'existe pas, ou le tâche est déjà terminé !")
+      # Afficher tous les taches
+
       case "3" :
         app.clear_screen()
         app.getTitle("TOUS LES TACHES")
         manager.list_tasks()
         app.exit()
+
+
+      # Supprimer une tâche
+
       case "4" :
         app.clear_screen()
         app.getTitle("SUPPRESSION D'UNE TACHE")
@@ -89,15 +108,27 @@ if __name__ == "__main__" :
           app.getMessage("✅ Tâche supprimé")
         else :
           app.getMessage("❌ Ce tâche n'existe pas !")
+
+
+      # A propos de l'application
+
       case "5" :
         app.clear_screen()
         app.getTitle("À PROPOS DE TSARATASK")
         app.getPropos()
         app.exit()
+
+
+      # Quitter l'application
+
       case "6" :
         app.clear_screen()
         app.getMessage("Merci d'avoir utiliser notre App :)")
         run = False
+
+
+      # Commande inconnue
+
       case _ :
         app.clear_screen()
         app.getMessage("❌❌❌ Choisir les options sur le menu ❌❌❌")

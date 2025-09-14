@@ -26,10 +26,20 @@ class TaskManager :
     print("")
     print("")
 
+  def list_tasks_not_finish(self) :
+    for i,task in enumerate(self.tasks) :
+      if task.completed == False :
+        print(f"{i} | {task.title} | {task.description} | { "✅" if task.completed else "❌" } | echeance : {task.date_echeance} | créer : {task.created_at}")
+    print("")
+    print("")
+
   def mark_completed(self, index) :
     if 0 <= index < len(self.tasks) :
       self.tasks[index].mark_completed()
       self.save_task()
+      return True
+    else :
+      return False
 
   def save_task(self) :
     with open(self.filename, "w") as file:
