@@ -1,16 +1,9 @@
 [
     {
-        "title": "Tache 4",
-        "description": "Apprendre PHP",
-        "date_echeance": "2025-09-20 20:00:00",
-        "created_at": "2025-09-14 09:39:26",
-        "completed": false
-    },
-    {
-        "title": "Tache 2",
-        "description": "Apprendre Python",
-        "date_echeance": "2025-09-18 12:00:00",
-        "created_at": "2025-09-14 11:32:01",
+        "title": "clash of clan",
+        "description": "Jouer au clash of clan",
+        "date_echeance": "2025-10-10 12:00:00",
+        "created_at": "2025-09-14 13:37:39",
         "completed": true
     }
 ]

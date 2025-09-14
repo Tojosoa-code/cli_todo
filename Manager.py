@@ -14,22 +14,33 @@ class TaskManager :
 
   def remove_task(self, index) :
     if 0 <= index < len(self.tasks) :
-      self.tasks.remove(index)
+      del self.tasks[index]
       self.save_task()
       return True
     else :
       return False
 
   def list_tasks(self) :
-    for i,task in enumerate(self.tasks) :
-      print(f"{i} | {task.title} | {task.description} | { "✅" if task.completed else "❌" } | echeance : {task.date_echeance} | créer : {task.created_at}")
-    print("")
-    print("")
+    if len(self.tasks) <= 0 :
+      return False
+    else :
+      for i,task in enumerate(self.tasks) :
+        print(f"{i} | {task.title} | {task.description} | { "✅" if task.completed else "❌" } | echeance : {task.date_echeance} | créer : {task.created_at}")
+      print("")
+      print("")
+      return True
 
   def list_tasks_not_finish(self) :
+    x = 0
     for i,task in enumerate(self.tasks) :
       if task.completed == False :
         print(f"{i} | {task.title} | {task.description} | { "✅" if task.completed else "❌" } | echeance : {task.date_echeance} | créer : {task.created_at}")
+        x += 1
+    if x <= 0 :
+      return False
+    else :
+      return True
+
     print("")
     print("")
 

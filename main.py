@@ -30,8 +30,6 @@ if __name__ == "__main__" :
   run = True
   app = App()
   manager = TaskManager("tasks.json")
-  width, _ = shutil.get_terminal_size()
-  welcom = "✨ Bienvenue dans TsaraTask - Ny asa voalamina tsara ✨"
   app.clear_screen()
   print("")
   print("")
@@ -42,7 +40,7 @@ if __name__ == "__main__" :
   print("   ██║    ███████║ ██║  ██║ ██║  ██║ ██║  ██║       ██║    ██║  ██║ ███████║ ██║  ██╗    ██║  ██║ ██║      ██║     ")
   print("   ╚═╝    ╚══════╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝       ╚═╝    ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝    ╚═╝  ╚═╝ ╚═╝      ╚═╝     ")
   print("")
-  print(welcom.center(width))
+  app.getMessage("✨ Bienvenue dans TsaraTask - Ny asa voalamina tsara ✨")
   print("")
 
 
@@ -78,21 +76,30 @@ if __name__ == "__main__" :
       case "2" :
         app.clear_screen()
         app.getTitle("MARQUER TERMINER")
-        manager.list_tasks_not_finish()
-        task_mark = int(input("Numéro du tâche à marquer comme terminé [> "))
-        mark = manager.mark_completed(task_mark)
-        app.clear_screen()
-        if mark :
-          app.getMessage("✅ Tâche mis à jour")
+        if manager.list_tasks_not_finish() :
+          print("")
+          task_mark = int(input("Numéro du tâche à marquer comme terminé [> "))
+          mark = manager.mark_completed(task_mark)
+          app.clear_screen()
+          if mark :
+            app.getMessage("✅ Tâche mis à jour")
+          else :
+            app.getMessage("❌ Ce tâche n'existe pas, ou le tâche est déjà terminé !")
         else :
-          app.getMessage("❌ Ce tâche n'existe pas, ou le tâche est déjà terminé !")
+          app.emptyTask()
+          app.exit()
+
       # Afficher tous les taches
 
       case "3" :
         app.clear_screen()
         app.getTitle("TOUS LES TACHES")
-        manager.list_tasks()
-        app.exit()
+
+        if manager.list_tasks():
+          app.exit()
+        else :
+          app.emptyTask()
+          app.exit()
 
 
       # Supprimer une tâche
@@ -100,14 +107,18 @@ if __name__ == "__main__" :
       case "4" :
         app.clear_screen()
         app.getTitle("SUPPRESSION D'UNE TACHE")
-        manager.list_tasks()
-        task_del = int(input("Numéro du tâche à supprimer [> "))
-        res = manager.remove_task(task_del)
-        app.clear_screen()
-        if res :
-          app.getMessage("✅ Tâche supprimé")
+        if manager.list_tasks() :
+          print("")
+          task_del = int(input("Numéro du tâche à supprimer [> "))
+          res = manager.remove_task(task_del)
+          app.clear_screen()
+          if res :
+            app.getMessage("✅ Tâche supprimé")
+          else :
+            app.getMessage("❌ Ce tâche n'existe pas !")
         else :
-          app.getMessage("❌ Ce tâche n'existe pas !")
+          app.emptyTask()
+          app.exit()
 
 
       # A propos de l'application

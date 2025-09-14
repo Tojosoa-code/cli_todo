@@ -3,6 +3,7 @@ import shutil
 
 class App :
 
+
   def getMenu(self) :
     print("╔══════════════════════════════════════════════════════════╗")
     print("║                        📝 TsaraTask                      ║")
@@ -56,9 +57,14 @@ class App :
     print("★" * width + "\n")
 
   def getMessage(self, title) :
+    width, _ = shutil.get_terminal_size()
     print("")
-    print(title)
+    print(title.center(width))
     print("")
+
+
+  def emptyTask(self) :
+    self.getMessage("il n'y a aucune Tâche en ce moment !!!")
 
   def clear_screen(self):
     # Windows
